@@ -33,19 +33,35 @@ $(document).ready(function() {
       url: url
     }).then(function(response) {
       writeMemes(response)
+      
     });
 
   };
     const writeMemes = function(data){
         data.data.forEach(function(image){
             console.log(image.images.fixed_height.url)
+            
             let imageURL = image.images.fixed_height.url
             $('.image-display').append(
                 `<img src="${imageURL}">
                 `
             )
         })
+
     }
 
+    $('#clear-btn').on('click', function(e){
+      e.preventDefault();
+      $('.image-display').empty()
+    })
 
-});
+$('#search-btn').on('click', function(event){
+  event.preventDefault();
+  console.log(event)
+})
+
+
+
+
+
+    });
